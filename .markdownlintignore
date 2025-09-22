@@ -1,0 +1,13 @@
+# Dependencies and build outputs
+node_modules/
+dist/
+
+# VCS and caches
+.git/
+.cache/
+.temp/
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
