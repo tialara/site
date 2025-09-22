@@ -4,7 +4,7 @@
   "scripts": {
     "start": "eleventy --serve",
     "dev": "eleventy --serve",
-    "build": "eleventy && npm run minify",
+    "build": "ELEVENTY_ENV=production eleventy && pnpm run minify",
     "minify": "esbuild dist/assets/style.css --minify --outfile=dist/assets/style.css --allow-overwrite",
     "lint": "prettier --write . && pnpm run lint:md",
     "lint:check": "prettier --check . && pnpm run lint:md:check",
@@ -15,7 +15,9 @@
     "@11ty/eleventy": "^3.0.0",
     "@shopify/prettier-plugin-liquid": "^1.10.0",
     "esbuild": "^0.24.0",
-    "prettier": "^3.6.2",
-    "markdownlint-cli": "^0.45.0"
+    "html-minifier-terser": "^7.2.0",
+    "jsdom": "^27.0.0",
+    "markdownlint-cli": "^0.45.0",
+    "prettier": "^3.6.2"
   }
 }

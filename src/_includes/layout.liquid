@@ -2,13 +2,11 @@
   Todas as variáveis computadas ficam no topo para facilitar manutenção
 {% endcomment %}
 
-{% assign page_title = title | default: site.name %}
+{% assign page_title = title | default: site.title %}
 {% assign page_description = description | default: site.description %}
 {% assign page_locale = site.locale | default: 'pt-BR' %}
 {% assign page_language = page_locale | downcase | replace: '_', '-' %}
-{% assign canonical_url = site.url | default: '' | append: page.url | default: '/' %}
-{% assign at_context = '@context' %}
-{% assign at_type = '@type' %}
+{% assign canonical_url = site.baseUrl | default: '' | append: page.url | default: '/' %}
 
 <!doctype html>
 <html lang='{{ page_language }}'>
@@ -18,16 +16,15 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta name='description' content='{{ page_description }}'>
     <link rel='canonical' href='{{ canonical_url }}'>
-    <meta name='theme-color' content='#2563eb'>
+    <meta name='theme-color' content='#cce4ff'>
     <meta http-equiv='Content-Language' content='{{ page_language }}'>
-    <link rel='preconnect' href='https://unpkg.com' crossorigin>
 
     <!-- Open Graph -->
     <meta property='og:type' content='website'>
     <meta property='og:title' content='{{ page_title }}'>
     <meta property='og:description' content='{{ page_description }}'>
     <meta property='og:url' content='{{ canonical_url }}'>
-    <meta property='og:site_name' content='{{ site.name }}'>
+    <meta property='og:site_name' content='{{ site.title | default: page_title }}'>
     {% if site.locale %}<meta property='og:locale' content='{{ site.locale }}'>{% endif %}
     {% if site.image %}<meta property='og:image' content='{{ site.image }}'>{% endif %}
 
@@ -38,29 +35,36 @@
     <meta name='twitter:description' content='{{ page_description }}'>
     {% if site.image %}<meta name='twitter:image' content='{{ site.image }}'>{% endif %}
 
-    <!-- CSS -->
-    <link rel='stylesheet' href='https://unpkg.com/basscss@8.1.0/css/basscss.min.css'>
+    <!-- CSS: Open Props + normalize + estilos locais -->
+    <link rel='preconnect' href='https://fonts.googleapis.com'>
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+    <link href='https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='https://unpkg.com/open-props/normalize.min.css'>
+    <link rel='stylesheet' href='https://unpkg.com/open-props'>
     <link rel='stylesheet' href='/assets/style.css'>
 
     <!-- JSON-LD Structured Data -->
     <script type='application/ld+json'>
       {
-        "{{ at_context }}": "https://schema.org",
-        "{{ at_type }}": "WebSite",
-        "name": {{ site.name | json }},
-        "url": {{ site.url | json }},
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": {{ site.title | default: page_title | json }},
+        "url": {{ site.baseUrl | default: canonical_url | json }},
         "inLanguage": {{ page_locale | json }},
         "description": {{ page_description | json }}
       }
     </script>
   </head>
   <body>
-    <a href='#conteudo' class='sr-only focusable'>Pular para o conteúdo</a>
+    <a href='#conteudo'>Pular para o conteúdo</a>
     <nav class='px2 py2' aria-label='Menu principal'>
-      <div class='flex items-center justify-between flex-wrap'>
-        <h1 class='m0'><a href='#inicio' class='bold h3'>Meu Site</a></h1>
-        <ul class='list-reset flex flex-wrap'>
-          <li class='mr2'><a href='#inicio' class='bold' aria-current='page'>Início</a></li>
+      <div class='flex flex-wrap items-center justify-between container'>
+        <div class='flex items-center'>
+          <img src='/assets/logo.png' alt='{{ site.title | default: "Meu Site" }}' class='mr2' style='height:48px'>
+          <a href='/' class='h3 m0 bold'>{{ site.title | default: 'Meu Site' }}</a>
+        </div>
+        <ul class='list-reset flex flex-wrap items-center'>
+          <li class='mr2'><a href='#inicio' aria-current='page'>Início</a></li>
           <li class='mr2'><a href='#servicos'>Serviços</a></li>
           <li class='mr2'><a href='#depoimentos'>Depoimentos</a></li>
           <li class='mr2'><a href='#cobertura'>Área de Cobertura</a></li>
@@ -68,14 +72,17 @@
         </ul>
       </div>
     </nav>
-    <main id='conteudo' class='px2'>
-      <div class='container'>{{ content }}</div>
+    <main id='conteudo' class='px2 section' role='main'>
+      <div class='container'>
+        {{ content }}
+      </div>
     </main>
     <footer class='px2 py2'>
       <div class='container'>
-        <p><small>© 2025 - Meu Site SPA</small></p>
+        <p><small>© {{ year }} - {{ site.title | default: 'Meu Site SPA' }}</small></p>
       </div>
     </footer>
-    <script src='/assets/script.js' defer></script>
+    {% comment %} <script src='/assets/script.js' defer></script> {% endcomment %}
   </body>
 </html>
+

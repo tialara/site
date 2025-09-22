@@ -1,9 +1,9 @@
 # 👩‍👧 Tia Lara
 
-Site leve (≤250KB), estilo SPA (Single Page Application fake), feito com **Eleventy** e templates em **Liquid**. Deploy no **Netlify**.  
+Site leve (≤250KB), estilo SPA (navegação suave em página única estática), feito com **Eleventy** e templates em **Liquid**. Deploy no **Netlify**.  
 
 Website profissional para **divulgação e contato** do serviço de **cuidado infantil domiciliar** em **Uruana de Minas**.  
-A Tia Lara oferece atenção, carinho e segurança para crianças enquanto os pais trabalham ou precisam de apoio.
+A [Tia Lara](https://tialara.com.br/) oferece atenção, carinho e segurança para crianças enquanto os pais trabalham ou precisam de apoio.
 
 ## ✨ Features
 
