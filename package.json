@@ -1,23 +1,33 @@
 {
-  "name": "my-spa",
+  "name": "site",
   "version": "1.0.0",
+  "description": "Static site with Eleventy v3",
+  "type": "module",
+  "engines": { "node": ">=18" },
   "scripts": {
-    "start": "eleventy --serve",
-    "dev": "eleventy --serve",
-    "build": "ELEVENTY_ENV=production eleventy && pnpm run minify",
-    "minify": "esbuild dist/assets/style.css --minify --outfile=dist/assets/style.css --allow-overwrite",
-    "lint": "prettier --write . && pnpm run lint:md",
-    "lint:check": "prettier --check . && pnpm run lint:md:check",
-    "lint:md": "markdownlint --fix \"**/*.md\" --ignore-path .markdownlintignore",
-    "lint:md:check": "markdownlint \"**/*.md\" --ignore-path .markdownlintignore"
+    "dev": "eleventy --serve --quiet",
+    "dev:port": "eleventy --serve --quiet --port=3000",
+    "build": "cross-env ELEVENTY_ENV=production eleventy",
+    "debug": "cross-env DEBUG=Eleventy* eleventy",
+    "debugstart": "cross-env DEBUG=Eleventy* eleventy --serve --quiet",
+    "benchmark": "cross-env DEBUG=Eleventy:Benchmark* eleventy",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "pnpm run format:check && markdownlint \"**/*.md\" --ignore-path .markdownlintignore"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^6.0.4",
+    "@11ty/eleventy-navigation": "^1.0.4",
+    "@11ty/eleventy-plugin-rss": "^2.0.4",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "@shopify/prettier-plugin-liquid": "^1.10.0",
-    "esbuild": "^0.24.0",
+    "@zachleat/heading-anchors": "^1.0.3",
+    "cross-env": "^7.0.3",
     "html-minifier-terser": "^7.2.0",
-    "jsdom": "^27.0.0",
+    "luxon": "^3.6.1",
     "markdownlint-cli": "^0.45.0",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "prismjs": "^1.30.0"
   }
 }
