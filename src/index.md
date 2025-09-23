@@ -65,7 +65,7 @@ description: Cuidado infantil domiciliar em Uruana de Minas com carinho, aten√ß√
           <label for="mensagem" class="form__label">Como posso ajudar?</label>
           <textarea id="mensagem" name="mensagem" class="form__textarea" placeholder="Conte-me sobre suas necessidades..."></textarea>
         </div>
-        <div class="text-center">
+        <div class="form__submit">
           <button type="submit" class="btn">Enviar Mensagem</button>
         </div>
       </form>

@@ -11,7 +11,12 @@
   <header class="header">
     <div class="header__container container">
       <a href="/" class="logo">{{ site.title }}</a>
-      <nav class="nav">
+      <button class="menu-toggle" id="menuToggle">
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+        <span class="menu-toggle__bar"></span>
+      </button>
+      <nav class="nav" id="nav">
         <ul class="nav__list">
           <li><a href="#inicio" class="nav__link">Início</a></li>
           <li><a href="#servicos" class="nav__link">Serviços</a></li>
@@ -31,5 +36,23 @@
       <p class="footer__text">&copy; {{ year }} {{ site.title }} - Cuidado infantil com amor</p>
     </div>
   </footer>
+  
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    const navLinks = document.querySelectorAll('.nav__link');
+    
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('menu-toggle--active');
+      nav.classList.toggle('nav--active');
+    });
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('menu-toggle--active');
+        nav.classList.remove('nav--active');
+      });
+    });
+  </script>
 </body>
 </html>
