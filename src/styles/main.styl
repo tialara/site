@@ -1,0 +1,274 @@
+// =============================================================================
+// MAIN STYLES - BEM + Open Props + Stylus
+// =============================================================================
+
+@import url('https://unpkg.com/open-props')
+
+// =============================================================================
+// BASE
+// =============================================================================
+
+*
+  box-sizing border-box
+
+body
+  margin 0
+  font-family var(--font-sans)
+  line-height var(--font-lineheight-3)
+  color var(--gray-8)
+  background var(--gray-0)
+
+// =============================================================================
+// LAYOUT
+// =============================================================================
+
+.container
+  max-width var(--size-content-3)
+  margin-inline auto
+  padding-inline var(--size-4)
+
+// =============================================================================
+// HEADER
+// =============================================================================
+
+.header
+  background var(--gray-0)
+  box-shadow var(--shadow-2)
+  position fixed
+  top 0
+  width 100%
+  z-index var(--layer-5)
+  
+  &__container
+    display flex
+    justify-content space-between
+    align-items center
+    padding-block var(--size-3)
+
+.logo
+  font-size var(--font-size-4)
+  font-weight var(--font-weight-7)
+  color var(--red-6)
+  text-decoration none
+
+.nav
+  &__list
+    display flex
+    list-style none
+    gap var(--size-5)
+    margin 0
+    padding 0
+    
+    @media (max-width: 768px)
+      display none
+  
+  &__link
+    color var(--gray-7)
+    text-decoration none
+    font-weight var(--font-weight-5)
+    transition color var(--animation-fade-in)
+    
+    &:hover
+      color var(--red-6)
+
+// =============================================================================
+// MAIN
+// =============================================================================
+
+.main
+  margin-top var(--size-10)
+
+// =============================================================================
+// SECTIONS
+// =============================================================================
+
+.section
+  padding-block var(--size-8)
+  
+  &--alt
+    background var(--gray-1)
+  
+  @media (max-width: 768px)
+    padding-block var(--size-6)
+
+// =============================================================================
+// HERO
+// =============================================================================
+
+.hero
+  text-align center
+  
+  &__title
+    font-size var(--font-size-8)
+    font-weight var(--font-weight-7)
+    color var(--gray-8)
+    margin-bottom var(--size-3)
+    
+    @media (max-width: 768px)
+      font-size var(--font-size-7)
+  
+  &__subtitle
+    font-size var(--font-size-4)
+    color var(--gray-6)
+    margin-bottom var(--size-5)
+
+// =============================================================================
+// SERVICES
+// =============================================================================
+
+.services
+  &__title
+    font-size var(--font-size-6)
+    font-weight var(--font-weight-6)
+    color var(--gray-8)
+    margin-bottom var(--size-5)
+    text-align center
+    
+    @media (max-width: 768px)
+      font-size var(--font-size-5)
+  
+  &__grid
+    display grid
+    grid-template-columns repeat(auto-fit, minmax(var(--size-content-1), 1fr))
+    gap var(--size-5)
+    margin-top var(--size-6)
+    
+    @media (max-width: 768px)
+      grid-template-columns 1fr
+
+.service-card
+  background var(--gray-0)
+  padding var(--size-5)
+  border-radius var(--radius-3)
+  box-shadow var(--shadow-2)
+  text-align center
+  transition transform var(--animation-fade-in)
+  
+  &:hover
+    transform translateY(calc(-1 * var(--size-1)))
+    box-shadow var(--shadow-4)
+  
+  &__icon
+    font-size var(--font-size-8)
+    margin-bottom var(--size-3)
+  
+  &__title
+    font-size var(--font-size-4)
+    font-weight var(--font-weight-6)
+    color var(--gray-8)
+    margin-bottom var(--size-2)
+  
+  &__text
+    font-size var(--font-size-3)
+    color var(--gray-6)
+
+// =============================================================================
+// ABOUT
+// =============================================================================
+
+.about
+  text-align center
+  
+  &__title
+    font-size var(--font-size-6)
+    font-weight var(--font-weight-6)
+    color var(--gray-8)
+    margin-bottom var(--size-5)
+    
+    @media (max-width: 768px)
+      font-size var(--font-size-5)
+  
+  &__lead
+    font-size var(--font-size-4)
+    color var(--gray-6)
+    margin-bottom var(--size-3)
+  
+  &__text
+    font-size var(--font-size-3)
+    color var(--gray-6)
+
+// =============================================================================
+// CONTACT
+// =============================================================================
+
+.contact
+  &__title
+    font-size var(--font-size-6)
+    font-weight var(--font-weight-6)
+    color var(--gray-8)
+    margin-bottom var(--size-5)
+    text-align center
+    
+    @media (max-width: 768px)
+      font-size var(--font-size-5)
+  
+  &__form
+    max-width 600px
+    margin 0 auto
+
+// =============================================================================
+// FORM
+// =============================================================================
+
+.form
+  &__group
+    margin-bottom var(--size-4)
+  
+  &__label
+    display block
+    margin-bottom var(--size-1)
+    font-weight var(--font-weight-6)
+    color var(--gray-8)
+  
+  &__input
+  &__textarea
+    width 100%
+    padding var(--size-2)
+    border var(--border-size-2) solid var(--gray-3)
+    border-radius var(--radius-2)
+    font-size var(--font-size-2)
+    transition border-color var(--animation-fade-in)
+    
+    &:focus
+      outline none
+      border-color var(--red-6)
+  
+  &__textarea
+    resize vertical
+    min-height var(--size-9)
+
+// =============================================================================
+// BUTTON
+// =============================================================================
+
+.btn
+  display inline-block
+  padding var(--size-2) var(--size-5)
+  background var(--red-6)
+  color var(--gray-0)
+  text-decoration none
+  border-radius var(--radius-round)
+  font-weight var(--font-weight-6)
+  transition all var(--animation-fade-in)
+  border none
+  cursor pointer
+  font-size var(--font-size-2)
+  
+  &:hover
+    background var(--red-7)
+    transform translateY(var(--size-1))
+    box-shadow var(--shadow-3)
+
+// =============================================================================
+// FOOTER
+// =============================================================================
+
+.footer
+  background var(--gray-8)
+  color var(--gray-0)
+  text-align center
+  padding-block var(--size-5)
+  
+  &__text
+    margin 0
+    font-size var(--font-size-2)

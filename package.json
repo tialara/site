@@ -30,7 +30,8 @@
     "luxon": "^3.6.1",
     "markdownlint-cli": "^0.45.0",
     "prettier": "^3.6.2",
-    "prismjs": "^1.30.0"
+    "prismjs": "^1.30.0",
+    "stylus": "^0.64.0"
   },
   "dependencies": {
     "open-props": "^1.7.16"

@@ -5,29 +5,30 @@
   <title>{{ title | default: site.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ description | default: site.description }}">
-  <link rel="stylesheet" href="https://unpkg.com/open-props">
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <nav>
-    <div class="container">
+  <header class="header">
+    <div class="header__container container">
       <a href="/" class="logo">{{ site.title }}</a>
-      <ul class="nav-links">
-        <li><a href="#inicio">Início</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="#inicio" class="nav__link">Início</a></li>
+          <li><a href="#servicos" class="nav__link">Serviços</a></li>
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#contato" class="nav__link">Contato</a></li>
+        </ul>
+      </nav>
     </div>
-  </nav>
+  </header>
   
-  <main>
+  <main class="main">
     {{ content }}
   </main>
   
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <p>&copy; {{ year }} {{ site.title }} - Cuidado infantil com amor</p>
+      <p class="footer__text">&copy; {{ year }} {{ site.title }} - Cuidado infantil com amor</p>
     </div>
   </footer>
 </body>

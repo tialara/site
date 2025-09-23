@@ -12,6 +12,21 @@ export default function(eleventyConfig) {
   // Passthrough for static assets
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addWatchTarget("src/assets");
+  eleventyConfig.addWatchTarget("src/styles");
+
+  // Stylus processing
+  eleventyConfig.addTemplateFormats("styl");
+  eleventyConfig.addExtension("styl", {
+    outputFileExtension: "css",
+    compile: async function(inputContent, inputPath) {
+      const stylus = await import("stylus");
+      return async () => {
+        return stylus.default(inputContent)
+          .set('filename', inputPath)
+          .render();
+      };
+    }
+  });
 
   // Shortcodes and filters
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
