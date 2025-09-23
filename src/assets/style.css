@@ -1,215 +1,206 @@
-/* Reset e base */
+/* Reset mínimo */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
-  color: #2c3e50;
-  background: #fefefe;
+  margin: 0;
+  font-family: var(--font-sans);
+  line-height: var(--font-lineheight-3);
+  color: var(--gray-8);
+  background: var(--gray-0);
 }
 
 /* Container */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: var(--size-content-3);
+  margin-inline: auto;
+  padding-inline: var(--size-4);
 }
 
 /* Navegação */
 nav {
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  background: var(--gray-0);
+  box-shadow: var(--shadow-2);
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: var(--layer-5);
 }
 
 nav .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 20px;
+  padding-block: var(--size-3);
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #e74c3c;
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-7);
+  color: var(--red-6);
   text-decoration: none;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: var(--size-5);
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
-  color: #2c3e50;
+  color: var(--gray-7);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
+  font-weight: var(--font-weight-5);
+  transition: color var(--animation-fade-in);
 }
 
 .nav-links a:hover {
-  color: #e74c3c;
+  color: var(--red-6);
 }
 
-/* Main content */
+/* Main */
 main {
-  margin-top: 80px;
+  margin-top: var(--size-10);
 }
 
 /* Seções */
 section {
-  padding: 4rem 0;
+  padding-block: var(--size-8);
 }
 
 section:nth-child(even) {
-  background: #f8f9fa;
+  background: var(--gray-1);
 }
 
 /* Tipografia */
 h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-8);
+  font-weight: var(--font-weight-7);
+  color: var(--gray-8);
+  margin-bottom: var(--size-3);
   text-align: center;
 }
 
 h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 2rem;
+  font-size: var(--font-size-6);
+  font-weight: var(--font-weight-6);
+  color: var(--gray-8);
+  margin-bottom: var(--size-5);
   text-align: center;
 }
 
 h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-6);
+  color: var(--gray-8);
+  margin-bottom: var(--size-2);
 }
 
 p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: #555;
+  font-size: var(--font-size-3);
+  margin-bottom: var(--size-3);
+  color: var(--gray-6);
 }
 
 .lead {
-  font-size: 1.3rem;
-  color: #666;
+  font-size: var(--font-size-4);
+  color: var(--gray-6);
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--size-5);
 }
 
 /* Botões */
 .btn {
   display: inline-block;
-  padding: 12px 30px;
-  background: #e74c3c;
-  color: white;
+  padding: var(--size-2) var(--size-5);
+  background: var(--red-6);
+  color: var(--gray-0);
   text-decoration: none;
-  border-radius: 25px;
-  font-weight: 600;
-  transition: all 0.3s;
+  border-radius: var(--radius-round);
+  font-weight: var(--font-weight-6);
+  transition: all var(--animation-fade-in);
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: var(--font-size-2);
 }
 
 .btn:hover {
-  background: #c0392b;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
-}
-
-.btn-secondary {
-  background: #3498db;
-}
-
-.btn-secondary:hover {
-  background: #2980b9;
-  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+  background: var(--red-7);
+  transform: translateY(var(--size-1));
+  box-shadow: var(--shadow-3);
 }
 
 /* Grid de serviços */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--size-content-1), 1fr));
+  gap: var(--size-5);
+  margin-top: var(--size-6);
 }
 
 .service-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  background: var(--gray-0);
+  padding: var(--size-5);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-2);
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform var(--animation-fade-in);
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(calc(-1 * var(--size-1)));
+  box-shadow: var(--shadow-4);
 }
 
 .service-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-8);
+  margin-bottom: var(--size-3);
 }
 
 /* Formulário */
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--size-4);
 }
 
 label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #2c3e50;
+  margin-bottom: var(--size-1);
+  font-weight: var(--font-weight-6);
+  color: var(--gray-8);
 }
 
 input, textarea {
   width: 100%;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
+  padding: var(--size-2);
+  border: var(--border-size-2) solid var(--gray-3);
+  border-radius: var(--radius-2);
+  font-size: var(--font-size-2);
+  transition: border-color var(--animation-fade-in);
 }
 
 input:focus, textarea:focus {
   outline: none;
-  border-color: #e74c3c;
+  border-color: var(--red-6);
 }
 
 textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: var(--size-9);
 }
 
 /* Footer */
 footer {
-  background: #2c3e50;
-  color: white;
+  background: var(--gray-8);
+  color: var(--gray-0);
   text-align: center;
-  padding: 2rem 0;
+  padding-block: var(--size-5);
 }
 
 /* Utilitários */
 .text-center { text-align: center; }
-.mb-2 { margin-bottom: 2rem; }
-.mt-2 { margin-top: 2rem; }
 
 /* Responsivo */
 @media (max-width: 768px) {
@@ -217,14 +208,14 @@ footer {
     display: none;
   }
   
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
+  h1 { font-size: var(--font-size-7); }
+  h2 { font-size: var(--font-size-5); }
   
   .services-grid {
     grid-template-columns: 1fr;
   }
   
   section {
-    padding: 2rem 0;
+    padding-block: var(--size-6);
   }
 }
