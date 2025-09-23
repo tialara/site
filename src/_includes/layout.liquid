@@ -1,85 +1,33 @@
-{% comment %}
-  Todas as variáveis computadas ficam no topo para facilitar manutenção
-{% endcomment %}
-
-{% assign page_title = title | default: site.title %}
-{% assign page_description = description | default: site.description %}
-{% assign page_locale = site.locale | default: 'pt-BR' %}
-{% assign page_language = page_locale | downcase | replace: '_', '-' %}
-{% assign canonical_url = site.baseUrl | default: '' | append: page.url | default: '/' %}
-
 <!doctype html>
-<html lang='{{ page_language }}'>
-  <head>
-    <meta charset='UTF-8'>
-    <title>{{ page_title }}</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <meta name='description' content='{{ page_description }}'>
-    <link rel='canonical' href='{{ canonical_url }}'>
-    <meta name='theme-color' content='#cce4ff'>
-    <meta http-equiv='Content-Language' content='{{ page_language }}'>
-
-    <!-- Open Graph -->
-    <meta property='og:type' content='website'>
-    <meta property='og:title' content='{{ page_title }}'>
-    <meta property='og:description' content='{{ page_description }}'>
-    <meta property='og:url' content='{{ canonical_url }}'>
-    <meta property='og:site_name' content='{{ site.title | default: page_title }}'>
-    {% if site.locale %}<meta property='og:locale' content='{{ site.locale }}'>{% endif %}
-    {% if site.image %}<meta property='og:image' content='{{ site.image }}'>{% endif %}
-
-    <!-- Twitter -->
-    <meta name='twitter:card' content='summary_large_image'>
-    {% if site.twitter %}<meta name='twitter:site' content='{{ site.twitter }}'>{% endif %}
-    <meta name='twitter:title' content='{{ page_title }}'>
-    <meta name='twitter:description' content='{{ page_description }}'>
-    {% if site.image %}<meta name='twitter:image' content='{{ site.image }}'>{% endif %}
-
-    <!-- CSS: Open Props + normalize + estilos locais -->
-    <link rel='stylesheet' href='https://unpkg.com/open-props/normalize.min.css'>
-    <link rel='stylesheet' href='https://unpkg.com/open-props'>
-    <link rel='stylesheet' href='/assets/style.css'>
-
-    <!-- JSON-LD Structured Data -->
-    <script type='application/ld+json'>
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": {{ site.title | default: page_title | json }},
-        "url": {{ site.baseUrl | default: canonical_url | json }},
-        "inLanguage": {{ page_locale | json }},
-        "description": {{ page_description | json }}
-      }
-    </script>
-  </head>
-  <body>
-    <a href='#conteudo'>Pular para o conteúdo</a>
-    <nav class='px2 py2' aria-label='Menu principal'>
-      <div class='flex flex-wrap items-center justify-between container'>
-        <div class='flex items-center'>
-          <img src='/assets/logo.png' alt='{{ site.title | default: "Meu Site" }}' class='mr2' style='height:48px'>
-          <a href='/' class='h3 m0 bold'>{{ site.title | default: 'Meu Site' }}</a>
-        </div>
-        <ul class='list-reset flex flex-wrap items-center'>
-          <li class='mr2'><a href='#inicio' aria-current='page'>Início</a></li>
-          <li class='mr2'><a href='#servicos'>Serviços</a></li>
-          <li class='mr2'><a href='#depoimentos'>Depoimentos</a></li>
-          <li class='mr2'><a href='#cobertura'>Área de Cobertura</a></li>
-          <li><a href='#contato'>Contato</a></li>
-        </ul>
-      </div>
-    </nav>
-    <main id='conteudo' class='px2 section' role='main'>
-      <div class='container'>
-        {{ content }}
-      </div>
-    </main>
-    <footer class='px2 py2'>
-      <div class='container'>
-        <p><small>© {{ year }} - {{ site.title | default: 'Meu Site SPA' }}</small></p>
-      </div>
-    </footer>
-    {% comment %} <script src='/assets/script.js' defer></script> {% endcomment %}
-  </body>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ title | default: site.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description | default: site.description }}">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">{{ site.title }}</a>
+      <ul class="nav-links">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <main>
+    {{ content }}
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; {{ year }} {{ site.title }} - Cuidado infantil com amor</p>
+    </div>
+  </footer>
+</body>
 </html>
-

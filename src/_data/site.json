@@ -1,8 +1,5 @@
 {
-  "title": "Meu Site SPA",
-  "baseUrl": "https://example.com",
-  "locale": "pt_BR",
-  "description": "Site leve, rápido e minimalista com serviços de consultoria, desenvolvimento web e suporte técnico.",
-  "twitter": "@seuuser",
-  "image": ""
+  "title": "Tia Lara",
+  "description": "Cuidado infantil domiciliar em Uruana de Minas com carinho, atenção e segurança.",
+  "baseUrl": "https://tialara.com.br"
 }

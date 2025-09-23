@@ -1,61 +1,74 @@
 ---
 layout: layout.liquid
-title: Meu Site SPA
-description: 'Consultoria, desenvolvimento web e suporte técnico com foco em performance, acessibilidade e SEO.'
+title: Tia Lara - Cuidado Infantil Domiciliar
+description: Cuidado infantil domiciliar em Uruana de Minas com carinho, atenção e segurança para seu filho.
 ---
 
-<section id="inicio" class="py4 center border-bottom">
-  <h1 class="mt0 mb2">Bem-vindo</h1>
-  <p class="lead mb3">Este é um site leve, rápido e minimalista, agora com um visual mais caprichado.</p>
-  <a href="#contato" class="btn btn--blue">Fale comigo</a>
+<section id="inicio">
+  <div class="container text-center">
+    <h1>Tia Lara</h1>
+    <p class="lead">Cuidado infantil domiciliar em Uruana de Minas<br>
+    Carinho, atenção e segurança para seu filho</p>
+    <a href="#contato" class="btn">Entre em Contato</a>
+  </div>
 </section>
 
-<section id="servicos" class="py4">
-  <h2 class="mt0">Serviços</h2>
-  <div class="grid mt2">
-    <div class="card">
-      <h3 class="mt0 mb1">Consultoria</h3>
-      <p class="m0">Diagnóstico, estratégia e planejamento para o seu projeto.</p>
-    </div>
-    <div class="card">
-      <h3 class="mt0 mb1">Desenvolvimento Web</h3>
-      <p class="m0">Sites rápidos, acessíveis e responsivos usando padrões modernos.</p>
-    </div>
-    <div class="card">
-      <h3 class="mt0 mb1">Suporte Técnico</h3>
-      <p class="m0">Acompanhamento contínuo e melhorias incrementais.</p>
+<section id="servicos">
+  <div class="container">
+    <h2>Nossos Serviços</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">👶</div>
+        <h3>Cuidado Diário</h3>
+        <p>Acompanhamento completo da rotina da criança com muito carinho e atenção.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>Atividades Lúdicas</h3>
+        <p>Brincadeiras educativas e criativas para o desenvolvimento infantil.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🍎</div>
+        <h3>Alimentação</h3>
+        <p>Preparo de refeições saudáveis e acompanhamento na hora das refeições.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="depoimentos" class="py4">
-  <h2 class="mt0">Depoimentos</h2>
-  <blockquote class="card italic">
-    <p class="m0">"Ótimo serviço, recomendo!"</p>
-    <footer class="mt1">— Cliente Feliz</footer>
-  </blockquote>
+<section id="sobre">
+  <div class="container text-center">
+    <h2>Sobre a Tia Lara</h2>
+    <p class="lead">Com anos de experiência no cuidado infantil, ofereço um serviço personalizado e cheio de amor para cada criança.</p>
+    <p>Localizada em Uruana de Minas, proporciono um ambiente seguro e acolhedor onde seu filho pode brincar, aprender e se desenvolver enquanto você trabalha tranquilo.</p>
+  </div>
 </section>
 
-<section id="cobertura" class="py4">
-  <h2 class="mt0">Área de Cobertura</h2>
-  <p class="m0">Atendemos todo o Brasil remotamente.</p>
-</section>
-
-<section id="contato" class="py4">
-  <h2 class="mt0">Contato</h2>
-  <form class="mt2" aria-label="Formulário de contato">
-    <div class="mb2">
-      <label for="nome">Nome</label>
-      <input id="nome" name="nome" type="text" placeholder="Seu nome" required autocomplete="name">
+<section id="contato">
+  <div class="container">
+    <h2>Entre em Contato</h2>
+    <div style="max-width: 600px; margin: 0 auto;">
+      <form>
+        <div class="form-group">
+          <label for="nome">Nome dos Pais</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="tel" id="telefone" name="telefone" required>
+        </div>
+        <div class="form-group">
+          <label for="crianca">Nome e Idade da Criança</label>
+          <input type="text" id="crianca" name="crianca" required>
+        </div>
+        <div class="form-group">
+          <label for="mensagem">Como posso ajudar?</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Conte-me sobre suas necessidades..."></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn">Enviar Mensagem</button>
+        </div>
+      </form>
     </div>
-    <div class="mb2">
-      <label for="email">E-mail</label>
-      <input id="email" name="email" type="email" placeholder="Seu email" required autocomplete="email">
-    </div>
-    <div class="mb2">
-      <label for="mensagem">Mensagem</label>
-      <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
-    </div>
-    <button class="btn btn--blue" type="submit">Enviar</button>
-  </form>
+  </div>
 </section>
