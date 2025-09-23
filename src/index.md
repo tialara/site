@@ -14,7 +14,7 @@ description: Cuidado infantil domiciliar em Uruana de Minas com carinho, atenç�
 </section>
 
 <section id="servicos" class="section section--alt services">
-  <div class="container">
+  <div class="container services__container">
     <h2 class="services__title">Nossos Serviços</h2>
     <div class="services__grid">
       <div class="service-card">
