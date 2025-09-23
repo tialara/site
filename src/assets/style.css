@@ -8,7 +8,7 @@
 /* Tipografia e base */
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
   color: var(--gray-9);
   line-height: var(--font-lineheight-3);
 }
@@ -89,3 +89,60 @@ a:hover { text-decoration: underline; }
 
 /* Gradiente opcional para heróis/banners (pastel) */
 .bg-gradient-pastel { background-image: var(--gradient-2); }
+
+/* --- Utilities added for layout harmonization --- */
+/* Spacing */
+.mt0 { margin-top: 0; }
+.mt1 { margin-top: var(--size-2); }
+.mt2 { margin-top: var(--size-3); }
+.mb1 { margin-bottom: var(--size-2); }
+.mb2 { margin-bottom: var(--size-3); }
+.mb3 { margin-bottom: var(--size-4); }
+.p2  { padding: var(--size-3); }
+.px3 { padding-inline: var(--size-4); }
+.py4 { padding-block: var(--size-5); }
+
+/* Display */
+.block { display: block; }
+.inline-block { display: inline-block; }
+
+/* Borders & Radius */
+.border { border: var(--border-size-1) solid var(--gray-4); }
+.border-bottom { border-bottom: var(--border-size-1) solid var(--gray-4); }
+.rounded { border-radius: var(--radius-2); }
+
+/* Typography helpers */
+.center { text-align: center; }
+.italic { font-style: italic; }
+.lead { font-size: var(--font-size-2); color: var(--gray-10); }
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: var(--size-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+
+/* Base form controls */
+label { display: block; margin-bottom: var(--size-2); font-weight: 600; }
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='url'],
+input[type='search'],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: var(--size-3);
+  border: var(--border-size-1) solid var(--gray-4);
+  border-radius: var(--radius-2);
+  background: var(--gray-0);
+  color: var(--gray-12);
+}
+input::placeholder, textarea::placeholder { color: var(--gray-7); }
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid var(--indigo-6);
+  outline-offset: 2px;
+  border-color: var(--indigo-6);
+}
