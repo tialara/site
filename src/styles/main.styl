@@ -428,8 +428,31 @@ body
     margin 0
     font-size var(--font-size-2)
 
+.site-build-info
+  margin-top var(--size-2)
+  font-size 0.8rem
+  color rgba(255,255,255,0.65)
+  filter grayscale(100%)
+  a
+    color inherit
+    text-decoration underline
+    &:hover
+      text-decoration none
+
+// =============================================================================
+// MAP STYLES
+// =============================================================================
+
+#map
+  z-index 1
+  
+@media (max-width: 768px)
+  #map
+    height 320px !important
+
 // =============================================================================
 // UTILITIES
+// =============================================================================
 // =============================================================================
 
 .text-center

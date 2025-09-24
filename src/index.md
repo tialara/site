@@ -44,6 +44,18 @@ description: Cuidado infantil domiciliar em Uruana de Minas com carinho, aten√ß√
   </div>
 </section>
 
+<section id="mapa" class="section">
+  <div class="container">
+    <h2 style="text-align:center">Onde Atendo</h2>
+
+    <div id="map" data-lat="{{ site.map.lat }}" data-lng="{{ site.map.lng }}" data-zoom="{{ site.map.zoom }}" style="height:450px;max-width:1000px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-2)"></div>
+  </div>
+</section>
+
+<!-- Picomap JS (local, sem console.log) -->
+<script src="/assets/js/picomap.js"></script>
+<script src="/assets/js/map.js" defer></script>
+
 <section id="contato" class="section section--alt contact">
   <div class="container">
     <h2 class="contact__title">Entre em Contato</h2>

@@ -1,5 +1,10 @@
 {
   "title": "Tia Lara",
   "description": "Cuidado infantil domiciliar em Uruana de Minas com carinho, atenção e segurança.",
-  "baseUrl": "https://tialara.com.br"
+  "baseUrl": "https://tialara.com.br",
+  "map": {
+    "lat": -16.060341,
+    "lng": -46.257886,
+    "zoom": 16
+  }
 }

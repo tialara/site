@@ -37,6 +37,16 @@
   <footer class="footer">
     <div class="container">
       <p class="footer__text">&copy; {{ year }} {{ site.title }} - Cuidado infantil com amor</p>
+      <div class="site-build-info">
+        Atualizado em {% if build.formattedDate %}{{ build.formattedDate }}{% else %}—{% endif %} • Commit
+        {% if build.commitUrl and build.shortHash %}
+          <a href="{{ build.commitUrl }}">{{ build.shortHash }}</a>
+        {% elsif build.shortHash %}
+          {{ build.shortHash }}
+        {% else %}
+          —
+        {% endif %}
+      </div>
     </div>
   </footer>
   
