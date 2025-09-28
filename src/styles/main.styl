@@ -57,11 +57,16 @@ body
     position relative
 
 .logo
-  font-size var(--font-size-4)
-  font-weight var(--font-weight-7)
-  color var(--red-6)
+  display inline-flex
+  align-items center
+  gap var(--size-2)
   text-decoration none
   z-index var(--layer-5)
+
+.logo__img
+  height 40px
+  width auto
+  display block
 
 .menu-toggle
   display none
