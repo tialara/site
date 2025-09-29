@@ -70,7 +70,7 @@ export default function () {
     try {
       formattedDate = DateTime.fromISO(iso, { zone: 'America/Sao_Paulo' })
         .setLocale('pt-BR')
-        .toFormat('dd/LL/yyyy HH:mm')
+        .toFormat('dd/LL/yyyy')
       // .toFormat("dd/LL/yyyy HH:mm");
     } catch {
       try {

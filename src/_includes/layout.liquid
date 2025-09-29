@@ -26,7 +26,6 @@
     <meta name='twitter:image' content='{{ site.url }}/assets/images/og-image.jpg'>
 
     <!-- Preload de recursos críticos -->
-    <link rel='preload' href='/assets/fonts/inter.woff2' as='font' type='font/woff2' crossorigin>
 
     <!-- Pré-carregamento de recursos críticos -->
     <link
@@ -163,7 +162,7 @@
           {{ site.title }} - Cuidado infantil com amor
         </p>
         <div class='site-build-info'>
-          Atualizado em
+          Atualizado em 
           {% if build.formattedDate %}{{ build.formattedDate }}{% else %}—{% endif %} • Commit
           {% if build.commitUrl and build.shortHash %}
             <a href='{{ build.commitUrl }}' aria-label='Ver commit no GitHub'>
