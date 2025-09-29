@@ -1,0 +1,51 @@
+{% comment %}
+  Componente de imagem otimizada
+
+  Parâmetros:
+    src: Caminho da imagem (obrigatório)
+    alt: Texto alternativo (obrigatório)
+    width: Largura da imagem (opcional)
+    height: Altura da imagem (opcional)
+    class: Classes CSS adicionais (opcional)
+    loading: Carregamento preguiçoso ('lazy' ou 'eager', padrão: 'lazy')
+    decoding: Decodificação assíncrona (padrão: 'async')
+    fetchpriority: Prioridade de carregamento (opcional)
+    sizes: Atributo sizes para imagens responsivas (opcional)
+    srcset: Atributo srcset para imagens responsivas (opcional)
+{% endcomment %}
+
+{%- assign loading = loading | default: 'lazy' -%}
+{%- assign decoding = decoding | default: 'async' -%}
+
+<picture>
+  {% if srcset %}
+    <source
+      srcset='{{ srcset }}'
+      {% if sizes %}
+        sizes='{{ sizes }}'
+      {% endif %}
+    >
+  {% endif %}
+
+  <img
+    src='{{ src }}'
+    alt='{{ alt }}'
+    {% if width %}
+      width='{{ width }}'
+    {% endif %}
+    {% if height %}
+      height='{{ height }}'
+    {% endif %}
+    {% if class %}
+      class='{{ class }}'
+    {% endif %}
+    loading='{{ loading }}'
+    decoding='{{ decoding }}'
+    {% if fetchpriority %}
+      fetchpriority='{{ fetchpriority }}'
+    {% endif %}
+    {% if sizes and srcset == blank %}
+      sizes='{{ sizes }}'
+    {% endif %}
+  >
+</picture>

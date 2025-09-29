@@ -1,71 +1,105 @@
-import { IdAttributePlugin, InputPathToUrlTransformPlugin, HtmlBasePlugin } from "@11ty/eleventy";
-import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
-import navigation from "@11ty/eleventy-navigation";
-import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-import rss from "@11ty/eleventy-plugin-rss";
-import { minify as htmlMinify } from "html-minifier-terser";
+import { IdAttributePlugin, InputPathToUrlTransformPlugin, HtmlBasePlugin } from '@11ty/eleventy'
+import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight'
+import navigation from '@11ty/eleventy-navigation'
+import { eleventyImageTransformPlugin } from '@11ty/eleventy-img'
+import rss from '@11ty/eleventy-plugin-rss'
+import { minify as htmlMinify } from 'html-minifier-terser'
 
-export default function(eleventyConfig) {
-  // Deep merge for global data/front matter
-  eleventyConfig.setDataDeepMerge(true);
+export default function (eleventyConfig) {
+  // Configurações de desempenho
+  eleventyConfig.setDataDeepMerge(true) // Deep merge para front matter
 
-  // Passthrough for static assets
-  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  eleventyConfig.addWatchTarget("src/assets");
-  eleventyConfig.addWatchTarget("src/styles");
+  // Cache busting para assets
+  eleventyConfig.setUseGitIgnore(false)
 
-  // Stylus processing
-  eleventyConfig.addTemplateFormats("styl");
-  eleventyConfig.addExtension("styl", {
-    outputFileExtension: "css",
-    compile: async function(inputContent, inputPath) {
-      const stylus = await import("stylus");
+  // Otimização de assets estáticos
+  eleventyConfig.addPassthroughCopy({
+    'src/assets': 'assets',
+    'src/favicon.ico': '/favicon.ico',
+    'robots.txt': '/robots.txt',
+    'site.webmanifest': '/site.webmanifest',
+    'sw.js': '/sw.js',
+  })
+
+  // Adicionar watch para arquivos de template adicionais
+  eleventyConfig.addWatchTarget('robots.txt')
+  eleventyConfig.addWatchTarget('site.webmanifest')
+  eleventyConfig.addWatchTarget('sw.js')
+
+  // Monitorar mudanças
+  eleventyConfig.addWatchTarget('src/assets')
+  eleventyConfig.addWatchTarget('src/styles')
+
+  // Ativar cache em produção
+  if (process.env.ELEVENTY_ENV === 'production') {
+    eleventyConfig.setBrowserSyncConfig({
+      files: './dist/**/*',
+      open: false,
+      notify: false,
+      ghostMode: false,
+      ui: false,
+      logLevel: 'silent',
+    })
+  }
+
+  // Process CSS with PostCSS (Tailwind + Autoprefixer)
+  eleventyConfig.addTemplateFormats('css')
+  eleventyConfig.addExtension('css', {
+    outputFileExtension: 'css',
+    compile: async function (inputContent, inputPath) {
+      const postcss = await import('postcss')
+      const autoprefixer = await import('autoprefixer')
+      const tailwindcss = await import('tailwindcss')
+
       return async () => {
-        return stylus.default(inputContent)
-          .set('filename', inputPath)
-          .render();
-      };
-    }
-  });
+        // Process with PostCSS (Tailwind + Autoprefixer)
+        const postcssResult = await postcss
+          .default([tailwindcss.default(), autoprefixer.default()])
+          .process(inputContent, { from: inputPath })
+
+        return postcssResult.css
+      }
+    },
+  })
 
   // Shortcodes and filters
-  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
-  eleventyConfig.addFilter("isoDate", (value) => new Date(value).toISOString());
-  eleventyConfig.addFilter("strip", (value = "") => String(value).trim());
+  eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`)
+  eleventyConfig.addFilter('isoDate', (value) => new Date(value).toISOString())
+  eleventyConfig.addFilter('strip', (value = '') => String(value).trim())
 
   // Official plugins
-  eleventyConfig.addPlugin(syntaxHighlight, { preAttributes: { tabindex: 0 } });
-  eleventyConfig.addPlugin(navigation);
-  eleventyConfig.addPlugin(HtmlBasePlugin);
-  eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
-  eleventyConfig.addPlugin(rss);
+  eleventyConfig.addPlugin(syntaxHighlight, { preAttributes: { tabindex: 0 } })
+  eleventyConfig.addPlugin(navigation)
+  eleventyConfig.addPlugin(HtmlBasePlugin)
+  eleventyConfig.addPlugin(InputPathToUrlTransformPlugin)
+  eleventyConfig.addPlugin(rss)
 
   // Image optimization
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-    formats: ["avif", "webp", "auto"],
+    formats: ['avif', 'webp', 'auto'],
     failOnError: false,
     htmlOptions: {
       imgAttributes: {
-        loading: "lazy",
-        decoding: "async",
+        loading: 'lazy',
+        decoding: 'async',
       },
     },
-  });
+  })
 
   // Bundles for CSS and JS
-  eleventyConfig.addBundle("css", {
-    toFileDirectory: "dist",
-    bundleHtmlContentFromSelector: "style",
-  });
-  eleventyConfig.addBundle("js", {
-    toFileDirectory: "dist",
-    bundleHtmlContentFromSelector: "script",
-  });
+  eleventyConfig.addBundle('css', {
+    toFileDirectory: 'dist',
+    bundleHtmlContentFromSelector: 'style',
+  })
+  eleventyConfig.addBundle('js', {
+    toFileDirectory: 'dist',
+    bundleHtmlContentFromSelector: 'script',
+  })
 
   // Minify HTML only in production
-  if (process.env.ELEVENTY_ENV === "production") {
-    eleventyConfig.addTransform("htmlmin", async (content, outputPath) => {
-      if (outputPath && outputPath.endsWith(".html")) {
+  if (process.env.ELEVENTY_ENV === 'production') {
+    eleventyConfig.addTransform('htmlmin', async (content, outputPath) => {
+      if (outputPath && outputPath.endsWith('.html')) {
         return await htmlMinify(content, {
           collapseWhitespace: true,
           removeComments: true,
@@ -74,24 +108,24 @@ export default function(eleventyConfig) {
           removeEmptyAttributes: true,
           minifyCSS: true,
           minifyJS: true,
-        });
+        })
       }
-      return content;
-    });
+      return content
+    })
   }
 
   return {
     dir: {
-      input: "src",
-      output: "dist",
-      includes: "_includes",
+      input: 'src',
+      output: 'dist',
+      includes: '_includes',
     },
-    templateFormats: ["md", "liquid"],
-    markdownTemplateEngine: "liquid",
-    htmlTemplateEngine: "liquid",
+    templateFormats: ['md', 'liquid'],
+    markdownTemplateEngine: 'liquid',
+    htmlTemplateEngine: 'liquid',
     serverOptions: {
       port: 8080,
       showVersion: true,
     },
-  };
+  }
 }

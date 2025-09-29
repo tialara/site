@@ -5,7 +5,10 @@ description: Cuidado infantil domiciliar em Uruana de Minas com carinho, atenç�
 ---
 
 <section id="inicio" class="section hero">
-  <div class="container text-center">
+  <div class="container">
+    <div class="flex justify-center pb-5">
+      <img src="/assets/logo.png" alt="Logo Tia Lara" class="max-w-xs w-full">
+    </div>
     <h1 class="hero__title">Tia Lara</h1>
     <p class="hero__subtitle">Cuidado infantil domiciliar em Uruana de Minas<br>
     Carinho, atenção e segurança para seu filho</p>
@@ -46,9 +49,10 @@ description: Cuidado infantil domiciliar em Uruana de Minas com carinho, atenç�
 
 <section id="mapa" class="section">
   <div class="container">
-    <h2 style="text-align:center">Onde Atendo</h2>
+    <h2 class="text-center text-4xl font-semibold text-neutral-800 mb-8">Onde Atendo</h2>
 
-    <div id="map" data-lat="{{ site.map.lat }}" data-lng="{{ site.map.lng }}" data-zoom="{{ site.map.zoom }}" style="height:450px;max-width:1000px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:var(--shadow-2)"></div>
+    <div id="map" data-lat="{{ site.map.lat }}" data-lng="{{ site.map.lng }}" data-zoom="{{ site.map.zoom }}" class="h-96 max-w-5xl mx-auto rounded-xl overflow-hidden shadow-soft"></div>
+
   </div>
 </section>
 

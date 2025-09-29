@@ -1,0 +1,320 @@
+/* =============================================================================
+    MAIN STYLES
+   ============================================================================= */
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+    font-synthesis: none;
+  }
+
+  body {
+    @apply m-0 font-sans leading-relaxed text-neutral-800 bg-neutral-50 w-full max-w-full overflow-x-hidden;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .container {
+    @apply max-w-6xl mx-auto px-6 w-full;
+  }
+
+  .header {
+    @apply bg-white backdrop-blur-sm shadow-soft fixed top-0 w-full z-50;
+  }
+
+  .header__container {
+    @apply flex flex-col md:flex-row justify-center md:justify-between items-center py-4 relative;
+  }
+
+  .logo {
+    @apply inline-flex items-center gap-3 no-underline z-50 flex-col md:flex-row;
+  }
+
+  .logo__img {
+    @apply h-16 md:h-12 w-auto block;
+  }
+
+  .logo__text {
+    @apply text-xl md:text-lg font-semibold text-primary-600 text-center md:text-left;
+  }
+
+  .menu-toggle {
+    @apply hidden flex-col cursor-pointer p-2 z-50 bg-transparent border-none;
+  }
+
+  .menu-toggle__bar {
+    @apply w-6 h-0.5 bg-neutral-700 my-0.5 transition-all duration-300 rounded-sm;
+  }
+
+  .menu-toggle--active .menu-toggle__bar:nth-child(1) {
+    @apply rotate-45 translate-x-1.5 translate-y-1.5;
+  }
+
+  .menu-toggle--active .menu-toggle__bar:nth-child(2) {
+    @apply opacity-0;
+  }
+
+  .menu-toggle--active .menu-toggle__bar:nth-child(3) {
+    @apply -rotate-45 translate-x-1.5 -translate-y-1.5;
+  }
+
+  .nav {
+    @apply flex list-none gap-8 m-0 p-0;
+  }
+
+  .nav--active {
+    @apply left-0;
+  }
+
+  .nav__list {
+    @apply flex list-none gap-8 m-0 p-0;
+  }
+
+  .nav__link {
+    @apply text-neutral-700 no-underline font-medium transition-colors duration-300 text-base hover:text-primary-600;
+  }
+
+  .nav__cta {
+    @apply mt-6;
+  }
+
+  .main {
+    @apply mt-20 min-h-screen flex flex-col;
+  }
+
+  .section {
+    @apply py-16 flex-shrink-0;
+  }
+
+  .section--alt {
+    @apply bg-neutral-100;
+  }
+
+  .hero {
+    @apply flex items-center justify-center min-h-[70vh] text-center pt-8;
+  }
+
+  .hero__container {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .hero__title {
+    @apply text-6xl font-bold text-neutral-800 mb-4;
+  }
+
+  .hero__subtitle {
+    @apply text-xl text-neutral-600 mb-8 max-w-full;
+  }
+
+  .services__container {
+    @apply max-w-5xl mx-auto;
+  }
+
+  .services__title {
+    @apply text-4xl font-semibold text-neutral-800 mb-8 text-center;
+  }
+
+  .services__grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6;
+  }
+
+  .service-card {
+    @apply bg-white p-8 rounded-xl shadow-soft text-center transition-all duration-300 flex flex-col items-center hover:-translate-y-1 hover:shadow-soft-lg;
+  }
+
+  .service-card__icon {
+    @apply text-5xl mb-4 block;
+  }
+
+  .service-card__title {
+    @apply text-xl font-semibold text-neutral-800 mb-3;
+  }
+
+  .service-card__text {
+    @apply text-base text-neutral-600 flex-grow;
+  }
+
+  .about {
+    @apply text-center;
+  }
+
+  .about__container {
+    @apply max-w-4xl;
+  }
+
+  .about__title {
+    @apply text-4xl font-semibold text-neutral-800 mb-8;
+  }
+
+  .about__lead {
+    @apply text-xl text-neutral-600 mb-4;
+  }
+
+  .about__text {
+    @apply text-base text-neutral-600;
+  }
+
+  .contact__title {
+    @apply text-4xl font-semibold text-neutral-800 mb-8 text-center;
+  }
+
+  .contact__form {
+    @apply max-w-2xl mx-auto;
+  }
+
+  .form {
+    @apply flex flex-col gap-6;
+  }
+
+  .form__group {
+    @apply flex flex-col;
+  }
+
+  .form__label {
+    @apply block mb-2 font-semibold text-neutral-800;
+  }
+
+  .form__input {
+    @apply w-full p-3 border-2 border-neutral-300 rounded-lg text-sm transition-colors duration-300 font-sans focus:outline-none focus:border-primary-500;
+  }
+
+  .form__textarea {
+    @apply w-full p-3 border-2 border-neutral-300 rounded-lg text-sm transition-colors duration-300 font-sans focus:outline-none focus:border-primary-500 resize-y min-h-24;
+  }
+
+  .form__submit {
+    @apply self-center mt-4;
+  }
+
+  .btn {
+    @apply inline-block px-8 py-4 bg-gradient-to-br from-primary-500 to-primary-600 text-white no-underline rounded-xl font-semibold transition-all duration-300 border-none cursor-pointer text-base text-center shadow-soft relative overflow-hidden hover:from-primary-600 hover:to-primary-700 hover:-translate-y-0.5 hover:shadow-soft-lg;
+  }
+
+  .btn::before {
+    @apply content-[''] absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-500;
+  }
+
+  .btn:hover::before {
+    @apply left-full;
+  }
+
+  .btn--secondary {
+    @apply bg-gradient-to-br from-neutral-600 to-neutral-700 hover:from-neutral-700 hover:to-neutral-800;
+  }
+
+  .btn--small {
+    @apply px-6 py-2 text-sm;
+  }
+
+  .footer {
+    @apply bg-neutral-800 text-white text-center py-8 mt-auto;
+  }
+
+  .footer__text {
+    @apply m-0 text-sm;
+  }
+
+  .site-build-info {
+    @apply mt-3 text-xs text-white/65 grayscale;
+  }
+
+  .site-build-info a {
+    @apply text-inherit underline hover:no-underline;
+  }
+
+  #map {
+    @apply z-10;
+  }
+}
+
+/* Mobile Breakpoints */
+@media (max-width: 768px) {
+  .container {
+    @apply px-4;
+  }
+
+  .menu-toggle {
+    @apply flex;
+  }
+
+  .nav {
+    @apply fixed top-0 -left-full w-full h-screen bg-white flex items-center justify-center transition-all duration-300 z-40;
+  }
+
+  .nav--active {
+    @apply left-0;
+  }
+
+  .nav__list {
+    @apply flex-col gap-8 text-center;
+  }
+
+  .nav__link {
+    @apply text-xl;
+  }
+
+  .section {
+    @apply py-12;
+  }
+
+  .hero__title {
+    @apply text-4xl;
+  }
+
+  .hero__subtitle {
+    @apply text-lg;
+  }
+
+  .services__title {
+    @apply text-3xl;
+  }
+
+  .service-card {
+    @apply p-6;
+  }
+
+  .service-card__icon {
+    @apply text-4xl;
+  }
+
+  .service-card__title {
+    @apply text-lg;
+  }
+
+  .service-card__text {
+    @apply text-sm;
+  }
+
+  .about__title {
+    @apply text-3xl;
+  }
+
+  .about__lead {
+    @apply text-lg;
+  }
+
+  .about__text {
+    @apply text-sm;
+  }
+
+  .contact__title {
+    @apply text-3xl;
+  }
+
+  #map {
+    height: 320px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav__cta {
+    @apply hidden;
+  }
+}

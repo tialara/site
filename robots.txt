@@ -1,0 +1,43 @@
+# Configuração do arquivo robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: {{ site.baseUrl }}/sitemap.xml
+
+# Desativar rastreamento de arquivos de desenvolvimento
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /_site/
+Disallow: /dist/
+
+# Desativar rastreamento de arquivos de sistema
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /yarn.lock
+Disallow: /pnpm-lock.yaml
+Disallow: /tailwind.config.js
+Disallow: /postcss.config.js
+Disallow: /eleventy.config.js
+
+# Desativar rastreamento de arquivos de ambiente
+Disallow: /.env
+Disallow: /.env.*
+Disallow: /*.env
+
+# Desativar rastreamento de arquivos de configuração
+Disallow: /*.config.js
+Disallow: /*.config.json
+
+# Desativar rastreamento de arquivos de log
+Disallow: /*.log
+
+# Desativar rastreamento de arquivos de backup
+Disallow: /*.bak
+Disallow: /*.old
+Disallow: /*.swp
+
+# Desativar rastreamento de arquivos de desenvolvimento
+Disallow: /*.map
+Disallow: /src/*.map
+Disallow: /dist/*.map
