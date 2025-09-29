@@ -16,7 +16,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'src/assets': 'assets',
     'src/favicon.ico': '/favicon.ico',
-    'robots.txt': '/robots.txt',
     'site.webmanifest': '/site.webmanifest',
     'sw.js': '/sw.js',
   })
@@ -32,7 +31,19 @@ export default function (eleventyConfig) {
 
   // Ativar cache em produção
   if (process.env.ELEVENTY_ENV === 'production') {
+    // Add cache control headers
     eleventyConfig.setBrowserSyncConfig({
+      middleware: function(req, res, next) {
+        // Cache static assets for 1 year
+        if (req.url.match(/^\/(assets|styles|js)\/.*\.(jpg|jpeg|png|webp|avif|css|js)$/)) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        }
+        // Cache HTML for 1 hour
+        else if (req.url.match(/\.html$/) || req.url === '/') {
+          res.setHeader('Cache-Control', 'public, max-age=3600');
+        }
+        next();
+      },
       files: './dist/**/*',
       open: false,
       notify: false,
@@ -78,12 +89,18 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
     formats: ['avif', 'webp', 'auto'],
     failOnError: false,
-    htmlOptions: {
-      imgAttributes: {
-        loading: 'lazy',
-        decoding: 'async',
-      },
+    defaultAttributes: {
+      loading: 'lazy',
+      decoding: 'async',
     },
+    filenameFormat: function(id, src, width, format) {
+      const extension = format === 'jpeg' ? 'jpg' : format;
+      return `${id}-${width}w.${extension}`;
+    },
+    urlPath: '/assets/images/',
+    widths: [24, 48, 96, 128, 256, 384, 512, 768, 1024, null],
+    minimumWidth: 24,
+    maximumWidth: 1024,
   })
 
   // Bundles for CSS and JS

@@ -33,7 +33,7 @@
       var a = l('button')
       return (
         (a.innerText = t),
-        (a.style = `width: 20px; position: absolute; top: ${o}px; left: ${e}px`),
+      (a.style = `width: 44px; height: 44px; position: absolute; top: ${o}px; left: ${e}px; cursor: pointer; display: flex; align-items: center; justify-content: center; background: white; border: 1px solid #ccc; border-radius: 4px;`),
         a.addEventListener('click', () => this.#o(i, h, s)),
         a
       )
@@ -41,16 +41,18 @@
     #p() {
       var t = l('div')
       ;((t.style = 'height: 100%; width: 100%; position: absolute; top: 0px; left: 0px'),
+        // Up button
         t.append(this.#h('\u25b2', 0, 1, 0, 40, 20)),
-        t.append(l('br')),
-        t.append(this.#h('\u25c0', -1, 0, 0, 20, 40)),
-        t.append(this.#h('\u25b6', 1, 0, 0, 60, 40)),
-        t.append(l('br')),
-        t.append(this.#h('\u25bc', 0, -1, 0, 40, 60)),
-        t.append(l('br')),
-        t.append(this.#h('+', 0, 0, 1, 40, 100)),
-        t.append(l('br')),
-        t.append(this.#h('-', 0, 0, -1, 40, 120)),
+        // Left button
+        t.append(this.#h('\u25c0', -1, 0, 0, 8, 72)),
+        // Right button
+        t.append(this.#h('\u25b6', 1, 0, 0, 72, 72)),
+        // Down button
+        t.append(this.#h('\u25bc', 0, -1, 0, 40, 124)),
+        // Zoom in button
+        t.append(this.#h('+', 0, 0, 1, 40, 176)),
+        // Zoom out button
+        t.append(this.#h('-', 0, 0, -1, 40, 228)),
         this.map.append(t))
     }
     #l(t, i, h, s, e) {

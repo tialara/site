@@ -77,12 +77,20 @@
         href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
     ></noscript>
 
+    <!-- Critical CSS inline -->
+    {% capture critical_css %}
+      {% include 'critical.css' %}
+    {% endcapture %}
+    <style>
+      {{ critical_css }}
+    </style>
+
     <!-- CSS principal carregado de forma não-bloqueante -->
     <link
       rel='preload'
       href='/styles/main.css'
       as='style'
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="this.onload=null;this.rel='stylesheet';window.performance.mark('css-loaded')"
     >
     <noscript><link rel='stylesheet' href='/styles/main.css'></noscript>
 
@@ -129,7 +137,6 @@
     <header class='header'>
       <div class='header__container container'>
         <a href='/' class='logo'>
-          <img src='/assets/logo.png' alt='{{ site.title }}' class='logo__img'>
           <span class='logo__text'>{{ site.title }}</span>
         </a>
         <button class='menu-toggle' id='menuToggle'>
